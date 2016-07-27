@@ -29,3 +29,15 @@ When the command exits, the container will be deleted.
 ~~~
 docker run --rm --name devdocs -p 4000:4000 -v $path:/src jekyll3 jekyll serve --host 0.0.0.0 --no-watch
 ~~~
+
+### Accessing the HTML site
+
+For linux users, you can access the generated HTML site from `localhost` on port 4000.
+
+For Mac and Windows users, you must get the ip of the virtual machine running docker.
+
+Run the following command to get the ip of the docker machine and use it to access the generated HTML site on port 4000.
+
+~~~
+docker-machine ip default
+~~~
