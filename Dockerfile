@@ -18,7 +18,8 @@ RUN gem install \
   pygments.rb \
   json \
   rouge \
-  jekyll-lunr-js-search
+  jekyll-lunr-js-search \
+  jekyll-watch:1.4.0 
 
 VOLUME /src
 EXPOSE 4000
