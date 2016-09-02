@@ -18,8 +18,7 @@ RUN gem install \
   pygments.rb \
   json \
   rouge \
-  jekyll-watch:1.4.0 \
-  therubyracer
+  jekyll-watch:1.4.0 
 
 VOLUME /src
 EXPOSE 4000
