@@ -9,16 +9,16 @@ RUN apt-get update \
 
 RUN gem install \
   github-pages:83\
-  jekyll \
-  jekyll-redirect-from \
+  jekyll:3.1.6 \
   kramdown \
   rdiscount \
-  jekyll-last-modified-at \
   RedCloth \
   pygments.rb \
   json \
   rouge \
-  jekyll-watch:1.4.0 
+  jekyll-watch \
+  jekyll-last-modified-at:0.3.4 \
+  jekyll-redirect-from:~> 0.8.0
 
 VOLUME /src
 EXPOSE 4000
