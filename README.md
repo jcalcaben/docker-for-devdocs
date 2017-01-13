@@ -27,7 +27,7 @@ This will create the container named 'devdocs', mount the directory pointed at b
 When the command exits, the container will be deleted.
 
 ~~~
-docker run --rm --name devdocs -p 4000:4000 -v $path:/src jekyll3 jekyll serve --host 0.0.0.0 --no-watch
+docker run --rm --name devdocs -p 4000:4000 -v $path:/src jekyll3 jekyll serve --host 0.0.0.0
 ~~~
 
 ### Accessing the HTML site
