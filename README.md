@@ -12,23 +12,17 @@ Reads the `Dockerfile` and creates an image tagged as jekyll3.
 docker build -t jekyll3 .
 ~~~
 
-### Create the $devdocs shell variable
+### Run the container from the image
 
-This variable specifies where the DevDocs content is located.
+1. Navigate to your local devdocs repository folder. 
+2. If you are running the container for the first time, delete the file `Gemfile.lock` if it exists.
+3. Run the following command to create a docker container named 'devdocs' that generates and serves the DevDocs HTML:
 
 ~~~
-devdocs = <absolute path to devdocs directory>
+docker run --rm --name devdocs -p 4000:4000 -v $PWD:/src jekyll3 jekyll serve --host 0.0.0.0 --incremental
 ~~~
-
-### Create and run the container from the image
-
-This will create the container named 'devdocs', mount the directory pointed at by the `$devdocs` variable, and use jekyll to generate and serve the DevDocs HTML.
 
 When the command exits, the container will be deleted.
-
-~~~
-docker run --rm --name devdocs -p 4000:4000 -v $devdocs:/src jekyll3 jekyll serve --host 0.0.0.0
-~~~
 
 ### Accessing the HTML site
 
@@ -40,4 +34,26 @@ Run the following command to get the ip of the docker machine and use it to acce
 
 ~~~
 docker-machine ip default
+~~~
+
+## Shortening build times
+
+You can shorten build times by ignoring entire version directories.
+
+1. Navigate to your local devdocs repository folder.
+2. Create a file called `._config.yml` with the following content:
+
+~~~
+#exclude: ['scss', 'bin', 'node_modules', 'vendor', '.git', '.idea', 'guides/v2.0', 'guides/v2.1']
+#exclude: ['scss', 'bin', 'node_modules', 'vendor', '.git', '.idea', 'guides/v2.2', 'guides/v2.1']
+#exclude: ['scss', 'bin', 'node_modules', 'vendor', '.git', '.idea', 'guides/v2.0', 'guides/v2.2']
+#exclude: ['scss', 'bin', 'node_modules', 'vendor', '.git', '.idea']
+#exclude: ['scss', 'bin', 'node_modules', 'vendor', '.git', '.idea', 'guides/v2.0', 'guides/v2.2','guides/v2.1']
+~~~
+
+3. Uncomment the line that excludes the versions you do not need built.
+4. Run the following command in the devdocs repository folder:
+
+~~~
+docker run --rm --name devdocs -p 4000:4000 -v $PWD:/src jekyll3 jekyll serve --host 0.0.0.0 --config _config.yml,._config.yml --incremental
 ~~~
