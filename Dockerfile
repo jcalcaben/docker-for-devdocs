@@ -18,9 +18,10 @@ RUN gem install \
 #  json \
 #  rouge \
 #  jekyll-watch \
-  jekyll-last-modified-at:0.3.4
+  jekyll-last-modified-at:0.3.4 \
 #  jekyll-redirect-from \
 #  minitest
+  algoliasearch-jekyll:1.0.0.beta.pre.1
 
 VOLUME /src
 EXPOSE 4000
