@@ -1,27 +1,17 @@
 FROM ruby:2.2.5
 
-#RUN apt-get update \
-#  && apt-get install -y \
-#    node \
-#    python-pygments \
-#  && apt-get clean \
-#  && rm -rf /var/lib/apt/lists/
-
 RUN gem install \
-#  colorator:0.1\
-  github-pages:83\
-#  jekyll:3.1.6 \
-#  kramdown \
-#  rdiscount \
-#  RedCloth \
-  pygments.rb \
-#  json \
-#  rouge \
-#  jekyll-watch \
-  jekyll-last-modified-at:0.3.4 \
-#  jekyll-redirect-from \
-#  minitest
+  github-pages:167\
+  jekyll:3.6.2 \
   algoliasearch-jekyll:1.0.0.beta.pre.1
+#  specific_install
+
+ENV LANG C.UTF-8
+
+# RUN git clone https://github.com/magento-devdocs/devdocs-theme.git
+# RUN cd devdocs-theme && gem build devdocs.gemspec && gem install --local ./devdocs-0.0.1.gem
+
+# RUN gem specific_install https://github.com/magento-devdocs/devdocs-theme.git -b master
 
 VOLUME /src
 EXPOSE 4000
