@@ -4,7 +4,8 @@ RUN gem install \
   github-pages:167\
   jekyll:3.6.2 \
   algoliasearch-jekyll:1.0.0.beta.pre.1\
-  html-proofer
+  html-proofer\
+  launchy
 #  specific_install
 
 ENV LANG C.UTF-8
