@@ -1,11 +1,13 @@
-FROM ruby:2.2.5
+FROM ruby:2.4.3
 
 RUN gem install \
   github-pages:167\
   jekyll:3.6.2 \
   algoliasearch-jekyll:1.0.0.beta.pre.1\
-  html-proofer\
-  launchy
+  html-proofer:3.7.6\
+  launchy\
+  minitest:5.11.1
+
 #  specific_install
 
 ENV LANG C.UTF-8
